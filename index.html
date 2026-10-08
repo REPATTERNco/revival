@@ -56,7 +56,7 @@ img{max-width:100%;height:auto;display:block}
 header{display:flex;flex-direction:column;align-items:center;gap:6px;padding-block:32px 0}
 /* The logo file has wide transparent padding around the ring; negative margins let the wordmark sit right under the ring. */
 header img{width:96px;height:96px;margin:-21px 0 -21px}
-.join-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 28px;margin-top:48px;padding-top:40px;border-top:1px solid var(--line);text-align:center}
+.join-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 28px;margin-top:40px;padding-top:36px;border-top:1px solid var(--line);text-align:center}
 .join-row p{margin:0;font-family:var(--display);font-size:clamp(21px,2vw,25px);line-height:1.3}
 .faqs .join-row{grid-column:1 / -1}
 .hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding-block:28px 36px}
@@ -70,7 +70,7 @@ header img{width:96px;height:96px;margin:-21px 0 -21px}
 .vsl-cap i{font-size:20px;color:var(--brown)}
 .vsl-frame{border-radius:var(--r);overflow:hidden;background:var(--brown)}
 
-.cta{padding-block:40px 88px}
+.cta{padding-block:32px 48px}
 .cta-inner{max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
 .price{display:flex;flex-direction:column;align-items:center;gap:2px}
 .price .num{font-family:var(--display);font-size:60px;line-height:1}
@@ -81,7 +81,7 @@ header img{width:96px;height:96px;margin:-21px 0 -21px}
 .facts span{display:inline-flex;align-items:center;gap:8px}
 .facts i{font-size:18px}
 
-.section{border-top:1px solid var(--line);padding-block:88px}
+.section{border-top:1px solid var(--line);padding-block:72px}
 .videos-head{margin:0 0 36px}
 @media (min-width:900px){.nowrap-lg{white-space:nowrap}}
 .videos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
@@ -107,6 +107,19 @@ header img{width:96px;height:96px;margin:-21px 0 -21px}
 .shot .who{font-size:15px;color:var(--muted)}
 .shot .who strong{color:var(--brown);font-weight:700}
 .shot img{border-radius:var(--r);border:1px solid var(--line);background:#fff;width:100%}
+.feature-video{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:32px 56px;align-items:center;margin-top:56px;padding-top:56px;border-top:1px solid var(--line)}
+.fv-player{border-radius:var(--r);overflow:hidden;background:var(--brown)}
+.fv-text{display:flex;flex-direction:column;gap:14px;min-width:0}
+.fv-text blockquote{margin:0;font-family:var(--display);font-size:clamp(25px,2.6vw,34px);line-height:1.25}
+.fv-text .who{font-size:15px;color:var(--muted)}
+.fv-text .who strong{color:var(--brown);font-weight:700}
+.video-row{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:24px;margin-top:36px}
+.video-row .player{border-radius:var(--r);overflow:hidden;background:var(--brown)}
+.vt-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:36px}
+.vt{margin:0;display:flex;flex-direction:column;gap:14px;min-width:0}
+.vt .player{border-radius:var(--r);overflow:hidden;background:var(--brown)}
+.vt figcaption{font-family:var(--display);font-size:clamp(19px,1.6vw,22px);line-height:1.35}
+.videos-block{border-top:0}
 .midcta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px;background:var(--brown);color:var(--cream);border-radius:var(--r);padding:36px 40px;margin-top:8px}
 .midcta > div{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 320px}
 .midcta .serif{font-size:clamp(28px,3vw,40px);line-height:1.1}
@@ -166,7 +179,12 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;p
 
 @media (prefers-reduced-motion:reduce){.btn,.faq summary i{transition:none}}
 @media (max-width:860px){
-  .split,.lily .wrap,.faqs .wrap,.fit .wrap,.wall{grid-template-columns:minmax(0,1fr)}
+  .split,.lily .wrap,.faqs .wrap,.fit .wrap,.wall,.feature-video{grid-template-columns:minmax(0,1fr)}
+  /* One column: flatten the two wall columns so the screenshots follow the lead order. */
+  .wall-col{display:contents}
+  .o1{order:1}.o2{order:2}.o3{order:3}.o4{order:4}.o5{order:5}.o6{order:6}
+  .fv-text{order:-1}
+  .fv-player{max-width:300px;width:100%;margin-inline:auto}
   .timeline{grid-template-columns:minmax(0,1fr);gap:36px}
   .getgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .lily img{aspect-ratio:1/1;max-width:480px}
@@ -177,9 +195,15 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;p
   .btn{width:100%;font-size:16px;padding:16px 18px;white-space:normal;letter-spacing:.04em}
   .body{font-size:17px}
   .faq summary{font-size:20px}
-  .section,.dark,.get{padding-block:68px}
+  .section,.dark,.get{padding-block:56px}
   .getgrid{grid-template-columns:minmax(0,1fr)}
   .wall,.wall-col{gap:40px}
+  .shot.more{display:none}
+  .vt-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+  .vt{flex:0 0 78%;scroll-snap-align:start}
+  .feature-video{margin-top:40px;padding-top:40px}
+  .video-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+  .video-row .player{flex:0 0 72%;scroll-snap-align:start}
   .videos{grid-template-columns:minmax(0,1fr);gap:20px;max-width:360px;margin-inline:auto}
   .midcta,.fit-yes,.fit-no{padding:32px 24px}
   .shot{margin-bottom:40px}
@@ -209,7 +233,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;p
 
 <section class="wrap cta" aria-label="Join REVIVAL">
   <div class="cta-inner">
-    <div class="price"><span class="anchor">The REVIVAL membership</span><span class="num">$49</span><span class="per">a month, less than two Pilates classes</span></div>
+    <div class="price"><span class="anchor">The REVIVAL membership</span><span class="num">$49</span><span class="per">a month, less than two Pilates classes</span><span class="per">Month to month, cancel anytime.</span></div>
     <a class="btn" href="https://app.arketa.co/repattern/pricing/checkout/9FqfcZOjEKCyAns5ZHQn" target="_blank" rel="noopener">Become a REVIVAL Member <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
     <p class="note" data-phase="before">Join now and start Foundation so you’re ready when the theme opens on October 19.</p>
     <p class="note" data-phase="after" hidden>The theme has started. Join, begin Foundation, and move into October’s videos at your own pace. Everything stays in the library.</p>
@@ -220,16 +244,50 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;p
   </div>
 </section>
 
-<section class="section" aria-labelledby="videos-title">
+<section class="section" aria-labelledby="proof-title">
   <div class="wrap">
-    <h2 id="videos-title" class="h2 videos-head nowrap-lg">Three people doing this work</h2>
-    <div class="videos">
-      <div class="player"><wistia-player media-id="bqm8hkyhtd" aspect="0.5625"></wistia-player></div>
-      <div class="player"><wistia-player media-id="e5zv1tq2rc" aspect="0.5625"></wistia-player></div>
-      <div class="player"><wistia-player media-id="mmgpswpdex" aspect="0.5625"></wistia-player></div>
+    <div class="proof-head">
+      <h2 id="proof-title" class="h2">What people notice when they do this work</h2>
+      <p class="body">Shared by students and members in Dr. Lily’s community and DMs.</p>
+    </div>
+    <div class="wall">
+      <div class="wall-col">
+        <figure class="shot o1">
+        <blockquote>“My glutes are active and they weren’t before … My arms are getting tone, my legs too.”</blockquote>
+        <figcaption class="who"><strong>Mónica Huarte</strong>, REPATTERN student</figcaption>
+        <img src="https://irp.cdn-website.com/759f1b52/dms3rep/multi/opt/15-1920w.PNG" width="1206" height="1504" loading="lazy" decoding="async" alt="Mónica Huarte's community post: In my case the transformation with repattern has been impressive. The first thing I noticed was that I was not compensating with my neck as I always do when I exercise. My posture is amazing now, my glutes are active and they weren't before and I feel more air. My arms are getting tone, my legs too. This practice feels right, healthy, and my body is loving it.">
+      </figure>
+        <figure class="shot o4">
+        <blockquote>“No, there is no weight loss between these pictures.”</blockquote>
+        <figcaption class="who"><strong>Nina Alaranta</strong>, in Before and Afters</figcaption>
+        <img src="https://irp.cdn-website.com/759f1b52/dms3rep/multi/opt/IMG_2143-1920w.PNG" width="1187" height="1291" loading="lazy" decoding="async" alt="Nina Alaranta's community post titled A little before and after: It's crazy how fast you can get rid of back fat when repatterning your ribs. I still can't believe the difference in such a short time and no, there is no weight loss between these pictures. With three before and after photos.">
+      </figure>
+        <figure class="shot o5 more">
+        <blockquote>“Woke up feeling like I am in a new body!”</blockquote>
+        <figcaption class="who"><strong>Miranda Johnson</strong>, bodyworker</figcaption>
+        <img src="https://irp.cdn-website.com/759f1b52/dms3rep/multi/opt/IMG_2135-6c7ae989-1920w.jpeg" width="1206" height="1316" loading="lazy" decoding="async" alt="Miranda Johnson's community post titled Inspired: Finished lower body tensegrity yesterday evening. Slept amazing and woke up feeling like I am in a new body! I had no idea how much the holding pattern in my pelvis has been blocking me my entire life. As a bodyworker and fascia enthusiast this is a missing piece to the puzzle for me.">
+      </figure>
+      </div>
+      <div class="wall-col">
+        <figure class="shot o2">
+        <blockquote>“My overall tone has completely changed.”</blockquote>
+        <figcaption class="who"><strong>Denise Schneider</strong>, REPATTERN student</figcaption>
+        <img src="https://irp.cdn-website.com/759f1b52/dms3rep/multi/opt/13-1920w.PNG" width="1206" height="1106" loading="lazy" decoding="async" alt="Denise Schneider's comment: I can not believe the change in my body. My family has noticed as well. It's so subtle yet incredible. My overall tone has completely changed. Your cues on how and where to actually feel the engagement have been so helpful to me. I'm just all over more energetic. Thank you for your thorough and extremely thoughtful work.">
+      </figure>
+        <figure class="shot o3">
+        <blockquote>“I can definitely see why my back always hurt in the past when I tried to do this.”</blockquote>
+        <figcaption class="who"><strong>Rachel Logan</strong>, started lifting with bow posture</figcaption>
+        <img src="https://irp.cdn-website.com/759f1b52/dms3rep/multi/opt/21-1920w.PNG" width="1206" height="1926" loading="lazy" decoding="async" alt="Rachel Logan's community post: I just recently started playing around with lifting with bow posture and have been incredibly humbled by how hard it is to keep the bow tone when adding weights. So I've mostly just been experimenting with trying different traditional movements with these principles body weight and I can definitely see why my back always hurt in the past when I tried to do this. Lily Baker, you're so right when you say there's no short cut for the basics. And it's so different to have the tone vs making the shape. So excited to keep working through this course and continue repatterning! With before and after photos.">
+      </figure>
+        <figure class="shot o6 more">
+        <blockquote>“If only I had known this 30 years ago.”</blockquote>
+        <figcaption class="who"><strong>Instagram DM</strong>, age 48</figcaption>
+        <img src="https://irp.cdn-website.com/759f1b52/dms3rep/multi/opt/WhatsApp+Image+2026-08-01+at+04.53.19-1920w.jpeg" width="1065" height="882" loading="lazy" decoding="async" alt="Direct message: I've had a really tight uneven forward rolling shoulder all my adult life, and I'm 48 now. I listened to what you said about breathing into your upper ribs and opening the chest, and my shoulder has released and returned to a more natural comfortable position, and my neck pain is so much better. If only I had known this 30 years ago.">
+      </figure>
+      </div>
     </div>
     <div class="join-row">
-      <p>Join REVIVAL at $49 a month.</p>
+      <p>650+ members already inside REVIVAL. $49 a month, cancel anytime.</p>
       <a class="btn" href="https://app.arketa.co/repattern/pricing/checkout/9FqfcZOjEKCyAns5ZHQn" target="_blank" rel="noopener">Become a REVIVAL Member <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
     </div>
   </div>
@@ -255,51 +313,22 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;p
   </div>
 </section>
 
-<section class="section" aria-labelledby="proof-title">
+<section class="section videos-block" aria-labelledby="videos-title">
   <div class="wrap">
-    <div class="proof-head">
-      <h2 id="proof-title" class="h2">What people notice when they do this work</h2>
-      <p class="body">Shared by students and members in Dr. Lily’s community and DMs.</p>
-    </div>
-    <div class="wall">
-      <div class="wall-col">
-        <figure class="shot">
-        <blockquote>“I can definitely see why my back always hurt in the past when I tried to do this.”</blockquote>
-        <figcaption class="who"><strong>Rachel Logan</strong>, started lifting with bow posture</figcaption>
-        <img src="https://irp.cdn-website.com/759f1b52/dms3rep/multi/opt/21-1920w.PNG" width="1206" height="1926" loading="lazy" decoding="async" alt="Rachel Logan's community post: I just recently started playing around with lifting with bow posture and have been incredibly humbled by how hard it is to keep the bow tone when adding weights. So I've mostly just been experimenting with trying different traditional movements with these principles body weight and I can definitely see why my back always hurt in the past when I tried to do this. Lily Baker, you're so right when you say there's no short cut for the basics. And it's so different to have the tone vs making the shape. So excited to keep working through this course and continue repatterning! With before and after photos.">
+    <h2 id="videos-title" class="h2 nowrap-lg">What it’s like to work with Dr. Lily</h2>
+    <div class="vt-row">
+      <figure class="vt">
+        <div class="player"><wistia-player media-id="e5zv1tq2rc" aspect="0.5625"></wistia-player></div>
+        <figcaption>“This class … breaks down how to hold and move your body in your day to day life.”</figcaption>
       </figure>
-        <figure class="shot">
-        <blockquote>“My overall tone has completely changed.”</blockquote>
-        <figcaption class="who"><strong>Denise Schneider</strong>, REPATTERN student</figcaption>
-        <img src="https://irp.cdn-website.com/759f1b52/dms3rep/multi/opt/13-1920w.PNG" width="1206" height="1106" loading="lazy" decoding="async" alt="Denise Schneider's comment: I can not believe the change in my body. My family has noticed as well. It's so subtle yet incredible. My overall tone has completely changed. Your cues on how and where to actually feel the engagement have been so helpful to me. I'm just all over more energetic. Thank you for your thorough and extremely thoughtful work.">
+      <figure class="vt">
+        <div class="player"><wistia-player media-id="bqm8hkyhtd" aspect="0.5625"></wistia-player></div>
+        <figcaption>“I have never felt as listened to or cared for by any provider in any medical field.”</figcaption>
       </figure>
-        <figure class="shot">
-        <blockquote>“If only I had known this 30 years ago.”</blockquote>
-        <figcaption class="who"><strong>Instagram DM</strong>, age 48</figcaption>
-        <img src="https://irp.cdn-website.com/759f1b52/dms3rep/multi/opt/WhatsApp+Image+2026-08-01+at+04.53.19-1920w.jpeg" width="1065" height="882" loading="lazy" decoding="async" alt="Direct message: I've had a really tight uneven forward rolling shoulder all my adult life, and I'm 48 now. I listened to what you said about breathing into your upper ribs and opening the chest, and my shoulder has released and returned to a more natural comfortable position, and my neck pain is so much better. If only I had known this 30 years ago.">
+      <figure class="vt">
+        <div class="player"><wistia-player media-id="mmgpswpdex" aspect="0.5625"></wistia-player></div>
+        <figcaption>“I’m only doing the basic stuff and it’s like night and day.”</figcaption>
       </figure>
-      </div>
-      <div class="wall-col">
-        <figure class="shot">
-        <blockquote>“My glutes are active and they weren’t before … My arms are getting tone, my legs too.”</blockquote>
-        <figcaption class="who"><strong>Mónica Huarte</strong>, REPATTERN student</figcaption>
-        <img src="https://irp.cdn-website.com/759f1b52/dms3rep/multi/opt/15-1920w.PNG" width="1206" height="1504" loading="lazy" decoding="async" alt="Mónica Huarte's community post: In my case the transformation with repattern has been impressive. The first thing I noticed was that I was not compensating with my neck as I always do when I exercise. My posture is amazing now, my glutes are active and they weren't before and I feel more air. My arms are getting tone, my legs too. This practice feels right, healthy, and my body is loving it.">
-      </figure>
-        <figure class="shot">
-        <blockquote>“No, there is no weight loss between these pictures.”</blockquote>
-        <figcaption class="who"><strong>Nina Alaranta</strong>, in Before and Afters</figcaption>
-        <img src="https://irp.cdn-website.com/759f1b52/dms3rep/multi/opt/IMG_2143-1920w.PNG" width="1187" height="1291" loading="lazy" decoding="async" alt="Nina Alaranta's community post titled A little before and after: It's crazy how fast you can get rid of back fat when repatterning your ribs. I still can't believe the difference in such a short time and no, there is no weight loss between these pictures. With three before and after photos.">
-      </figure>
-        <figure class="shot">
-        <blockquote>“Woke up feeling like I am in a new body!”</blockquote>
-        <figcaption class="who"><strong>Miranda Johnson</strong>, bodyworker</figcaption>
-        <img src="https://irp.cdn-website.com/759f1b52/dms3rep/multi/opt/IMG_2135-6c7ae989-1920w.jpeg" width="1206" height="1316" loading="lazy" decoding="async" alt="Miranda Johnson's community post titled Inspired: Finished lower body tensegrity yesterday evening. Slept amazing and woke up feeling like I am in a new body! I had no idea how much the holding pattern in my pelvis has been blocking me my entire life. As a bodyworker and fascia enthusiast this is a missing piece to the puzzle for me.">
-      </figure>
-      </div>
-    </div>
-    <div class="join-row">
-      <p>650+ members already inside REVIVAL. $49 a month.</p>
-      <a class="btn" href="https://app.arketa.co/repattern/pricing/checkout/9FqfcZOjEKCyAns5ZHQn" target="_blank" rel="noopener">Become a REVIVAL Member <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
     </div>
   </div>
 </section>
@@ -321,7 +350,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;p
     <div class="get-buy">
       <div>
         <div class="serif">$49 a month</div>
-        <div class="small">Less than two Pilates classes. 650+ members already inside.</div>
+        <div class="small">Month to month, cancel anytime. Less than two Pilates classes.</div>
       </div>
       <a class="btn" href="https://app.arketa.co/repattern/pricing/checkout/9FqfcZOjEKCyAns5ZHQn" target="_blank" rel="noopener">Become a REVIVAL Member <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
     </div>
@@ -367,7 +396,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;p
       <details><summary>I already lift. Do I need this?<i class="ph ph-plus" aria-hidden="true"></i></summary><div class="answer"><p>REVIVAL can work alongside your training or fully replace your workouts, depending on what your body needs. Either way, you start with Foundation.</p></div></details>
       <details><summary>I’m a beginner, older, or in pain. Can I do this?<i class="ph ph-plus" aria-hidden="true"></i></summary><div class="answer"><p>Yes. There’s the Foundation series, a Reshape series for doing bodywork on yourself, and a Regulate series where you can work completely on the floor and still build muscle and bone. Move slowly. Pain is never right.</p></div></details>
       <details><summary>What if I join after October 19?<i class="ph ph-plus" aria-hidden="true"></i></summary><div class="answer"><p>Start with Foundation, then move into October’s videos at your own pace. Everything stays in the library.</p></div></details>
-      <details><summary>Is there a minimum commitment?<i class="ph ph-plus" aria-hidden="true"></i></summary><div class="answer"><p>[Lily to confirm: month to month, cancel anytime?]</p></div></details>
+      <details><summary>Is there a minimum commitment?<i class="ph ph-plus" aria-hidden="true"></i></summary><div class="answer"><p>No. REVIVAL is month to month, and you can cancel anytime.</p></div></details>
       <details><summary>What equipment will I need?<i class="ph ph-plus" aria-hidden="true"></i></summary><div class="answer"><p>Most videos require no special equipment. I’ll let you know what you need before each one.</p><p>I recommend moving on a mat or sheepskin rug, outside whenever possible. Occasionally, we’ll use weights, rocks, or a countertop. I’ll show you how to use what you already have or what to purchase.</p></div></details>
       <details><summary>What is the time commitment?<i class="ph ph-plus" aria-hidden="true"></i></summary><div class="answer"><p>You can make it fit your life. We recommend three 20 to 40 minute strength workouts each week, 10 to 40 minute videos on the other days, and Sunday rest for sunshine and family.</p></div></details>
       <details><summary>Should I take the REPATTERN class or do REVIVAL?<i class="ph ph-plus" aria-hidden="true"></i></summary><div class="answer"><p>REPATTERN class requires a larger time commitment, as each video is around an hour. It’s my most in-depth offering, teaching you the anatomy, theory, and foundational principles behind this work.</p><p>REVIVAL brings those principles into shorter, easier-to-fit sessions with strength training workouts, without as much of the anatomical backstory.</p><p>Start with REPATTERN if you want to deeply understand the theory. Choose REVIVAL if you want more digestible chunks of guidance, want to build muscle without pain, or have done REPATTERN already.</p></div></details>
@@ -377,7 +406,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;p
       <details><summary>Can I work 1:1 with Dr. Lily?<i class="ph ph-plus" aria-hidden="true"></i></summary><div class="answer"><p>Yes. Make sure you have done the Foundation series at least twice before you book, to make the most of your time together. Bring your questions written down so we can refine your movement and bring clarity for you.</p></div></details>
     </div>
     <div class="join-row">
-      <p>Start with Foundation today. $49 a month.</p>
+      <p>Start with Foundation today. $49 a month, cancel anytime.</p>
       <a class="btn" href="https://app.arketa.co/repattern/pricing/checkout/9FqfcZOjEKCyAns5ZHQn" target="_blank" rel="noopener">Become a REVIVAL Member <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
     </div>
   </div>
@@ -407,11 +436,11 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;p
     <img src="https://irp.cdn-website.com/759f1b52/dms3rep/multi/opt/Image-aed28a7a-1920w.png" width="56" height="56" loading="lazy" alt="">
     <div data-phase="before" style="display:flex;flex-direction:column;align-items:center;gap:22px">
       <h2 id="close-title" class="h2">Start Foundation today. Be ready on the 19th.</h2>
-      <p class="body">Build Muscle Without Weights opens inside REVIVAL on Monday, October 19. Every new member starts with the six Foundation videos, so joining now means you’re ready when it opens. $49 a month.</p>
+      <p class="body">Build Muscle Without Weights opens inside REVIVAL on Monday, October 19. Every new member starts with the six Foundation videos, so joining now means you’re ready when it opens. $49 a month. Month to month, cancel anytime.</p>
     </div>
     <div data-phase="after" hidden style="display:flex;flex-direction:column;align-items:center;gap:22px">
       <h2 class="h2">Build Muscle Without Weights is live.</h2>
-      <p class="body">Join, begin Foundation, and move into October’s videos at your own pace. Everything stays in the library. $49 a month.</p>
+      <p class="body">Join, begin Foundation, and move into October’s videos at your own pace. Everything stays in the library. $49 a month. Month to month, cancel anytime.</p>
     </div>
     <a class="btn" href="https://app.arketa.co/repattern/pricing/checkout/9FqfcZOjEKCyAns5ZHQn" target="_blank" rel="noopener">Become a REVIVAL Member <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
     <div class="count" data-countdown-wrap><i class="ph ph-clock" aria-hidden="true"></i>New theme opens in <span data-countdown>10d 7h</span></div>
